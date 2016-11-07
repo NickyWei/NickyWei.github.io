@@ -25,7 +25,6 @@
     
     
     
-    
   <url>
     <loc>http://yoursite.com/2016/11/07/hello-world/</loc>
     <lastmod>2016-11-07T01:45:30.000Z</lastmod>

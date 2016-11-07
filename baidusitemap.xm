@@ -3,6 +3,27 @@
 
 
     
+  <url>
+    <loc>about_dir:about/2016/11/07/Hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2016-11-07T05:53:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo的基本命令</title>
+        <pubTime>2016-11-07T05:51:28.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="记录" url="about_dir:about/categories/%E8%AE%B0%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
     
     
   <url>

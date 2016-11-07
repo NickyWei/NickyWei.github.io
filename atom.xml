@@ -4,9 +4,9 @@
   <subtitle>随随便便记录记录</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="about_dir:about/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2016-11-07T06:09:02.000Z</updated>
-  <id>about_dir:about/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>魏成宗</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hexo的基本命令</title>
-    <link href="about_dir:about/2016/11/07/Hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
-    <id>about_dir:about/2016/11/07/Hexo的基本命令/</id>
+    <link href="http://yoursite.com/2016/11/07/Hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2016/11/07/Hexo的基本命令/</id>
     <published>2016-11-07T05:51:28.000Z</published>
     <updated>2016-11-07T06:09:02.000Z</updated>
     
@@ -37,17 +37,17 @@
     
     </summary>
     
-      <category term="记录" scheme="about_dir:about/categories/%E8%AE%B0%E5%BD%95/"/>
+      <category term="记录" scheme="http://yoursite.com/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="Hexo" scheme="about_dir:about/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="about_dir:about/2016/11/07/hello-world/"/>
-    <id>about_dir:about/2016/11/07/hello-world/</id>
+    <link href="http://yoursite.com/2016/11/07/hello-world/"/>
+    <id>http://yoursite.com/2016/11/07/hello-world/</id>
     <published>2016-11-07T01:45:30.000Z</published>
     <updated>2016-11-07T01:45:30.000Z</updated>
     
@@ -73,8 +73,8 @@
   
   <entry>
     <title>测试</title>
-    <link href="about_dir:about/2016/11/06/%E6%B5%8B%E8%AF%95/"/>
-    <id>about_dir:about/2016/11/06/测试/</id>
+    <link href="http://yoursite.com/2016/11/06/%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2016/11/06/测试/</id>
     <published>2016-11-06T03:16:50.000Z</published>
     <updated>2016-11-07T01:45:30.000Z</updated>
     

@@ -434,6 +434,7 @@ body >header a {
 }
 #imglogo img {
   width: 4em;
+  border-radius: 100%;
 }
 @media only screen and (min-width: 768px) {
   #imglogo img {

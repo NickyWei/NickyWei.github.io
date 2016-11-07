@@ -5,7 +5,7 @@
     
   <url>
     <loc>about_dir:about/2016/11/07/Hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2016-11-07T05:53:13.000Z</lastmod>
+    <lastmod>2016-11-07T06:06:54.000Z</lastmod>
     <data>
         <display>
         <title>Hexo的基本命令</title>

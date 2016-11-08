@@ -3,6 +3,28 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/</loc>
+    <lastmod>2016-11-08T11:43:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>UIButton设置图片和文字位置</title>
+        <pubTime>2016-11-08T11:36:09.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>UIButton</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
   <url>

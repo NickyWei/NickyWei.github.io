@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-07T06:28:54.000Z</updated>
+  <updated>2016-11-08T11:43:12.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UIButton设置图片和文字位置</title>
+    <link href="http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2016/11/08/UIButton设置图片和文字位置/</id>
+    <published>2016-11-08T11:36:09.000Z</published>
+    <updated>2016-11-08T11:43:12.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="iOS开发" scheme="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="UIButton" scheme="http://yoursite.com/tags/UIButton/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo的基本命令</title>

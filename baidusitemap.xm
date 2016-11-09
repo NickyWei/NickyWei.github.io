@@ -3,6 +3,28 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2016/11/09/%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E4%B8%8A%E4%BC%A0AppStore%E8%A2%AB%E6%8B%92%E7%9A%84%E5%8E%9F%E5%9B%A0/</loc>
+    <lastmod>2016-11-09T03:57:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>记录自己上传AppStore被拒的原因</title>
+        <pubTime>2016-11-09T03:56:17.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>审核被拒</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://yoursite.com/2016/11/09/iOS-LLDB%E8%B0%83%E8%AF%95/</loc>

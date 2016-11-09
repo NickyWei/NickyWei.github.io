@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-09T03:33:52.000Z</updated>
+  <updated>2016-11-09T03:57:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录自己上传AppStore被拒的原因</title>
+    <link href="http://yoursite.com/2016/11/09/%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E4%B8%8A%E4%BC%A0AppStore%E8%A2%AB%E6%8B%92%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
+    <id>http://yoursite.com/2016/11/09/记录自己上传AppStore被拒的原因/</id>
+    <published>2016-11-09T03:56:17.000Z</published>
+    <updated>2016-11-09T03:57:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下自己上架应用被拒的一些问题。</p>
+<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><blockquote>
+<p>Performance - 2.1<br>We were unable to review your app as it crashed on launch. We have attached detailed crash logs to help troubleshoot this issue.<strong>Next Steps</strong>Please revise your app and test it on a device while connected to an IPv6 network (all apps must support IPv6) to ensure it will launch without crashing.<strong>Resources</strong>For additional information about supporting IPv6 Networks, please refer to <a href="https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1" target="_blank" rel="external">Supporting IPv6 DNS64/NAT64 Networks</a> and <a href="https://developer.apple.com/support/ipv6/" target="_blank" rel="external">Supporting IPv6-only Networks</a>.For a networking overview, please see <a href="https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/Introduction/Introduction.html" target="_blank" rel="external">About Networking</a>.For information on how to symbolicate and read a crash log, please see <a href="https://developer.apple.com/library/content/technotes/tn2151/_index.html" target="_blank" rel="external">Tech Note TN2151 Understanding and Analyzing Application Crash Reports</a>.If you have difficulty reproducing this issue, please try testing the workflow described in <a href="https://developer.apple.com/library/ios/qa/qa1764/" target="_blank" rel="external">Testing Workflow with Xcode’s Archive feature</a>.If you have code-level questions after utilizing the above resources, you may wish to consult with <a href="https://developer.apple.com/support/technical/submit/" target="_blank" rel="external">Apple Developer Technical Support</a>. When the DTS engineer follows up with you, please be ready to provide:- complete details of your rejection issue(s)- screenshots- steps to reproduce the issue(s)- <a href="https://developer.apple.com/library/content/technotes/tn2151/_index.html" target="_blank" rel="external">symbolicated crash logs</a> - if your issue results in a crash log</p>
+</blockquote>
+<p>bb了一大堆说就是用你的应用挂了还扯到supporting IPv6，用的最新的网络请求库，网络地址用的是域名，测试没什么问题，即使没数据也不会挂了啊，查了半天竟然是数据库挂了，数据库挂了，数据库挂了，我的天<br><a href="https://github.com/wg689/Solve-App-Store-Review-Problem" target="_blank" rel="external">专门解决苹果审核问题的仓库.有ipv6 和后台定位被拒绝的终极解决方案，还有其他的</a></p>
+<p>###问题二</p>
+<blockquote>
+<p>-5  . 1.1 LEGAL: PRIVACY - DATA COLLECTION AND STORAGE<br>Legal -5.1.1<br>Your app uses the HealthKit or CareKit frameworks but does not include the required privacy policy.<strong>Next Steps</strong>Please update your app metadata to include a privacy policy URL and ensure that the URL you provide directs the user to your privacy policy.</p>
+</blockquote>
+<p>应用中用到了HealthKit框架，有些必要的描述和隐私协议都没具体的写清楚。</p>
+<h3 id="问题三"><a href="#问题三" class="headerlink" title="问题三"></a>问题三</h3><blockquote>
+<p>Design - 4.2.1<br>Your app uses the HealthKit or CareKit APIs but does not indicate integration with the Health app in your Application Description and clearly identify the HealthKit and CareKit functionality in your app’s user interface.<strong>Next Steps</strong>Please revise your app description to specify that your app integrates with the Health app.</p>
+</blockquote>
+<p>描述都已经写的很明确了，审核的人都不看的，直接把之前的问题抛出来，回复审核的人，内容都已经写好了，就可以发布了</p>
+<h3 id="问题四"><a href="#问题四" class="headerlink" title="问题四"></a>问题四</h3><blockquote>
+<p>Design Preamble<br>Your app includes an update button or alerts the user to update the app. To avoid user confusion, app version updates must utilize the iOS built-in update mechanism. We’ve attached screenshot(s) for your reference.<strong>Next Steps</strong>Please remove the update feature from your app. To distribute a new version of your app, upload the new app binary version into the same iTunes Connect record you created for the app’s previous version. Updated versions keep the same Apple ID, iTunes Connect ID (SKU), and bundle ID as the original version, and are available free to customers who purchased a previous version. </p>
+</blockquote>
+<p>说是内部包括一个更新按钮或提醒用户更新应用程序，呵呵哒，里面只是一个记录版本号，也没</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一下自己上架应用被拒的一些问题。&lt;/p&gt;
+&lt;h3 id=&quot;问题一&quot;&gt;&lt;a href=&quot;#问题一&quot; class=&quot;headerlink&quot; title=&quot;问题一&quot;&gt;&lt;/a&gt;问题一&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Performance - 2.1&lt;br&gt;We wer
+    
+    </summary>
+    
+      <category term="iOS开发" scheme="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="审核被拒" scheme="http://yoursite.com/tags/%E5%AE%A1%E6%A0%B8%E8%A2%AB%E6%8B%92/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS LLDB调试</title>

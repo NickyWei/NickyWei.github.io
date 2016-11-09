@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/09/Mac-OS-%E5%90%AF%E5%8A%A8Apache/</loc>
+    <lastmod>2016-11-09T08:42:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac OS 启动Apache</title>
+        <pubTime>2016-11-09T07:37:49.000Z</pubTime>
+        
+        <tag>web</tag>
+         
+        <tag>Apache</tag>
+         
+         
+           
+             
+              <breadCrumb title="web" url="http://yoursite.com/categories/web/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/09/iOS-Healthkit%E5%92%8CCMPedometer%E5%8C%BA%E5%88%AB/</loc>
     <lastmod>2016-11-09T05:45:22.000Z</lastmod>
     <data>

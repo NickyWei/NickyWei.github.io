@@ -1,0 +1,534 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Mac OS 启动Apache | CZ‘Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="魏成宗">
+    
+
+    <meta name="keywords" content="web">
+    <meta name="description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
+启动 Apache
+查看 Apache 版本打开终端，输入 -v``` 可以查看 Apache 版本信息。1 
+  $ httpd -vServer version: Apache/2.4.16 (Unix)Server built">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac OS 启动Apache">
+<meta property="og:url" content="http://yoursite.com/2016/11/09/Mac-OS-启动Apache/index.html">
+<meta property="og:site_name" content="CZ‘Blog">
+<meta property="og:description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
+启动 Apache
+查看 Apache 版本打开终端，输入 -v``` 可以查看 Apache 版本信息。1 
+  $ httpd -vServer version: Apache/2.4.16 (Unix)Server built">
+<meta property="og:updated_time" content="2016-11-09T08:42:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac OS 启动Apache">
+<meta name="twitter:description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
+启动 Apache
+查看 Apache 版本打开终端，输入 -v``` 可以查看 Apache 版本信息。1 
+  $ httpd -vServer version: Apache/2.4.16 (Unix)Server built">
+<meta name="twitter:creator" content="@zong1031">
+<link rel="publisher" href="zong1031">
+
+    
+    <link rel="alternative" href="/atom.xml" title="CZ‘Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="CZ‘Blog" title="CZ‘Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="CZ‘Blog">CZ‘Blog</a></h1>
+				<h2 class="blog-motto">随随便便记录记录</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/share">资源共享</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 16859760138452797000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/09/Mac-OS-启动Apache/" title="Mac OS 启动Apache" itemprop="url">Mac OS 启动Apache</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/zong1031?rel=author" title="魏成宗" target="_blank" itemprop="author">魏成宗</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-09T07:37:49.000Z" itemprop="datePublished"> 发表于 2016-11-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Apache"><span class="toc-number">1.</span> <span class="toc-text">启动 Apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#If-you-enter-‘-’-the-field-will-be-left-blank"><span class="toc-number">2.</span> <span class="toc-text"> If you enter ‘.’, the field will be left blank.</span></a></li></ol>
+		
+		</div>
+		
+		<p>我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。</p>
+<h2 id="启动-Apache"><a href="#启动-Apache" class="headerlink" title="启动 Apache"></a>启动 Apache</h2><ul>
+<li><p>查看 Apache 版本<br>打开终端，输入 <figure class="highlight plain"><figcaption><span>-v``` 可以查看 Apache 版本信息。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>  $ httpd -v<br>Server version: Apache/2.4.16 (Unix)<br>Server built:   Aug 22 2015 16:51:57<br>$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">* 启动 Apache   </div><div class="line">在终端输入 sudo apachectl start 即可启动 Apache。    </div><div class="line">启动后，在浏览器中输入 http://127.0.0.1 或 http://localhost 如果看到 It Works! 页面：</div><div class="line">那么 Apache 就启动成功了，站点的根目录为系统级根目录``` /Library/WebServer/Documents。```                                                                                </div><div class="line">启动后，你可以通过编辑 /etc/apache2/httpd.conf 文件来修改 Apache 配置。</div><div class="line">* 停止 Apache：sudo apachectl stop</div><div class="line">* 重启 Apache：sudo apachectl restart</div><div class="line"></div><div class="line">## 创建用户级根目录</div><div class="line">1. 我们也可以创建用户级根目录，更方便管理和操作。</div><div class="line">在用户目录下创建 ```Sites ```目录，```cd; mkdir Sites; touch Sites/.localized```，旧的 Mac 系统中如果该目录已存在，则略过。</div><div class="line">2. ```cd /etc/apache2/users``` 检查目录下是否存在 ```username.conf``` 文件，```username``` 为当前用户名，如果没有则创建一个 ```sudo touch username.conf```，并修改文件权限 ```sudo chmod 644 username.conf```。</div><div class="line">3. 创建之后，打开  ```username.conf``` 文件，```sudo vi  username.conf``` 将下面的配置信息写入文件，```username``` 依然为当前用户名：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>针对Apache不同版本 配置不同<br>For OSX 10.9 Apache 2.2</p>
+<directory "="" users="" username="" sites=""><br>Options Indexes MultiViews FollowSymLinks<br>AllowOverride All<br>Order allow,deny<br>Allow from all<br></directory><br>For OSX 10.10 Apache 2.4<br><directory "="" users="" username="" sites=""><br>AllowOverride All<br>Options Indexes MultiViews FollowSymLinks<br>Require all granted<br></directory>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">4. 编辑 ```/etc/apache2/httpd.conf``` 文件，找到下列代码，并将前面的注释符号``` #``` 删除：</div></pre></td></tr></table></figure>
+<p>Include /private/etc/apache2/extra/httpd-userdir.conf<br>LoadModule userdir_module libexec/apache2/mod_userdir.so</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line">5. 编辑 ```/etc/apache2/extra/httpd-userdir.conf ```文件，找到下列代码，并将前面的注释符号``` # ```删除：</div></pre></td></tr></table></figure>
+<p> Include /private/etc/apache2/users/*.conf<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">6. 重启 Apache：sudo apachectl restart</div><div class="line"></div><div class="line">在浏览器中输入 http://127.0.0.1/~username 或 http://localhost/~username，即可测试用户目录是否工作。</div><div class="line">## 启动 PHP</div><div class="line">Mac OS X 也默认集成了 PHP 环境，如果测试需要用到 PHP 环境，可以通过配置手动开启。</div><div class="line"></div><div class="line">1. 编辑 ```/etc/apache2/httpd.conf``` 文件，找到 ```LoadModule php5_module libexec/apache2/libphp5.so``` 并删除行前的注释符号 #。</div><div class="line">2. 重启 Apache：```sudo apachectl restart```。</div><div class="line">3. 现在 PHP 应该已经可以工作了，在页面中嵌入 ```&lt;?php phpinfo(); ?&gt;``` 可以查看 PHP 信息。</div><div class="line">4. 命在终端输入 ```php --ini``` 可查看 PHP 配置文件，我们可以将 ```/private/etc/php.ini.default``` 复制一份命名为 ```/private/etc/php.ini``` 并修改配置文件，如，设置 ```display_errors = On``` 打开PHP错误显示。</div><div class="line">## 安装 MySQL</div><div class="line">Mac OS X 没有集成 MySQL，需要自己安装，这个后续补充。</div><div class="line"></div><div class="line">## 开启 HTTPS</div><div class="line">如果测试需要 HTTPS 环境，如， iOS 7.1 以上的设备部署无线安装环境就必须使用 HTTPS，我们可以配置 Apache 开启 HTTPS 服务。</div><div class="line"></div><div class="line">## 创建自签名证书</div><div class="line">首先创建一个 ssl 目录用来存放证书</div></pre></td></tr></table></figure></p>
+<p>$ cd /etc/apache2/<br>$ sudo mkdir ssl<br>$ cd ssl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1. 创建主机密钥</div></pre></td></tr></table></figure></p>
+<p> $ sudo ssh-keygen -f local.server.com.key<br> Generating public/private rsa key pair.<br> Enter passphrase (empty for no passphrase):<br> Enter same passphrase again:<br> Your identification has been saved in local.server.com.key.<br> Your public key has been saved in local.server.com.key.pub.<br> The key fingerprint is:<br> SHA256:bNX90ww2g2GCh38Q/h68JnazkZYtnbkMEb1G5E51QWw root@XuCreamandeiMac.local<br> The key’s randomart image is:<br> +—[RSA 2048]—-+<br> |         oo.o +o+|<br> |        o.o+ B E.|<br> |         oo.+ %  |<br> |       . ..o.* B.|<br> |        S  .= +.+|<br> |       .   . X o.|<br> |          o &amp; =  |<br> |         . = B . |<br> |            . o  |<br> +—-[SHA256]—–+<br> $<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">这里会被要求提供一个密码用于主机密钥，可以选择任何的密码或直接留空。</div><div class="line"></div><div class="line">也可以使用下面的命令创建密钥：</div></pre></td></tr></table></figure></p>
+<p> $ sudo openssl genrsa -out local.server.com.key 2048<br> Generating RSA private key, 2048 bit long modulus<br> ….+++<br> ….+++<br> e is 65537 (0x10001)<br> $<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2.  创建签署申请</div></pre></td></tr></table></figure></p>
+<p> $ sudo openssl req -new -key local.server.com.key -out local.server.com.csr<br> You are about to be asked to enter information that will be incorporated<br> into your certificate request.<br> What you are about to enter is what is called a Distinguished Name or a DN.<br> There are quite a few fields but you can leave some blank<br> For some fields there will be a default value,</p>
+<h2 id="If-you-enter-‘-’-the-field-will-be-left-blank"><a href="#If-you-enter-‘-’-the-field-will-be-left-blank" class="headerlink" title=" If you enter ‘.’, the field will be left blank."></a> If you enter ‘.’, the field will be left blank.</h2><p> Country Name (2 letter code) [AU]:<br> State or Province Name (full name) [Some-State]:<br> Locality Name (eg, city) []:<br> Organization Name (eg, company) [Internet Widgits Pty Ltd]:<br> Organizational Unit Name (eg, section) []:<br> Common Name (e.g. server FQDN or YOUR name) []:local.server.com<br> Email Address []:</p>
+<p> Please enter the following ‘extra’ attributes<br> to be sent with your certificate request<br> A challenge password []:<br> An optional company name []:<br> $<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  系统会提示输入各项信息，由于这是自签名的证书，除了 ```Common Name (e.g. server FQDN or  YOUR name) []:``` FQDN（ fully qualified domain name）必须是服务器域名或 IP 外，其他都不重要，可以随意填写或一路回车，这里作为测试使用 ```local.server.com```。</div><div class="line">  </div><div class="line">3. 创建SSL证书       </div><div class="line">在生产环境中，我们需要提交证书申请（CSR）文件给证书颁发机构，由证书颁发机构提供SSL证书。</div></pre></td></tr></table></figure></p>
+<p>   $ sudo openssl x509 -req -days 365 -in local.server.com.csr -signkey local.server.com.key -out local.server.com.crt<br> Signature ok<br> subject=/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd/CN=local.server.com<br> Getting Private key<br> $<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我们也可以直接通过以下的命令创建证书：</div></pre></td></tr></table></figure></p>
+<p>   $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout local.server.com.key -out local.server.com.crt<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OK，我们看下SSL目录下面的文件，这些文件将在后面被用到：</div></pre></td></tr></table></figure></p>
+<p>   $ ls -l<br>-rw-r–r–  1 root  wheel  1180 10 22 13:08 local.server.com.crt<br>-rw-r–r–  1 root  wheel   993 10 22 11:58 local.server.com.csr<br>-rw——-  1 root  wheel  1679 10 22 11:44 local.server.com.key<br>-rw-r–r–  1 root  wheel   408 10 22 11:44 local.server.com.key.pub<br>-rw-r–r–  1 root  wheel  1679 10 22 13:19 local.server.com.nopass.key<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">## 配置 SSL</div><div class="line"></div><div class="line">1. 加载``` mod_ssl.so```，编辑 ```/etc/apache2/httpd.conf``` 文件，删除下列代码前的注释符号 #：</div></pre></td></tr></table></figure></p>
+<p>LoadModule ssl_module libexec/apache2/mod_ssl.so<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2. 包含 ```httpd-ssl.conf``` 文件，编辑 ```/etc/apache2/httpd.conf``` 文件，删除下列代码前的注释符号 #：</div></pre></td></tr></table></figure></p>
+<p>Include /private/etc/apache2/extra/httpd-ssl.conf<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">3. 添加 ```&lt;VirtualHost&gt;``` 到 ```httpd-ssl.conf```，编辑 ```/etc/apache2/extra/httpd-ssl.conf``` 文件：</div><div class="line">```httpd-ssl.conf``` 中已经有一条 ```&lt;VirtualHost&gt; ```记录，我们将其注释掉，新建一条：</div></pre></td></tr></table></figure></p>
+<p> <virtualhost *:443=""></virtualhost></p>
+<p> #General setup for the virtual host<br> DocumentRoot “/Library/WebServer/Documents”<br> ServerName local.server.com</p>
+<p> #SSL Engine Switch:<br> SSLEngine on</p>
+<p> #Server Certificate:<br> SSLCertificateFile “/etc/apache2/ssl/local.server.com.crt”</p>
+<p> #Server Private Key:<br> SSLCertificateKeyFile “/etc/apache2/ssl/local.server.com.key”</p>
+<p> #SSL Engine Options:<br> <filesmatch "\.(cgi|shtml|phtml|php)$"=""><br>     SSLOptions +StdEnvVars<br> </filesmatch><br> <directory "="" library="" webserver="" cgi-executables"=""><br>     SSLOptions +StdEnvVars<br> </directory><br> <br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">4. 为了能够使用 URL 访问服务器，我们需要配置HOST，```sudo vi /etc/hosts```，添加 ```127.0.0.1       local.server.com</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>检查配置文件并重启 Apache<br>命令行输入 <figure class="highlight plain"><figcaption><span>sudo apachectl -t```，提示：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>AH00526: Syntax error on line 92 of /private/etc/apache2/extra/httpd-ssl.conf:<br>SSLSessionCache: ‘shmcb’ session cache not supported (known names: ). Maybe you need to load the appropriate socache module (mod_socache_shmcb?).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">根据提示，编辑``` /etc/apache2/httpd.conf``` 文件，删除下列这些代码前的注释符号 #</div></pre></td></tr></table></figure>
+<p>LoadModule socache_shmcb_module libexec/apache2/mod_socache_shmcb.so</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">再次测试，显示 ```Syntax OK```：</div></pre></td></tr></table></figure>
+<p>$ sudo apachectl -t<br>Syntax OK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">说明测试通过，重启 Apache：</div></pre></td></tr></table></figure>
+<p>$ sudo apachectl restart<br>```<br>此时，就可以使用 HTTPS 访问本地服务了，在浏览器中输入 <a href="https://local.server.com/" target="_blank" rel="external">https://local.server.com/</a> 检查。</p>
+</li>
+</ol>
+<p>文／小白不是总（简书作者）<br>原文链接：<a href="http://www.jianshu.com/p/d006a34a343f" target="_blank" rel="external">http://www.jianshu.com/p/d006a34a343f</a><br>著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/web/">web</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/web/">web</a><a href="/tags/Apache/">Apache</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"zong1031"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2118684" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/09/iOS-Healthkit和CMPedometer区别/"  title="iOS Healthkit和CMPedometer区别">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS Healthkit和CMPedometer区别
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/11/09/Mac-OS-启动Apache/" data-title="Mac OS 启动Apache" data-url="http://yoursite.com/2016/11/09/Mac-OS-启动Apache/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Apache"><span class="toc-number">1.</span> <span class="toc-text">启动 Apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#If-you-enter-‘-’-the-field-will-be-left-blank"><span class="toc-number">2.</span> <span class="toc-text"> If you enter ‘.’, the field will be left blank.</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/web/" title="web">web<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Health/" style="font-size: 10px;">Health</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/LLDB/" style="font-size: 10px;">LLDB</a> <a href="/tags/UIButton/" style="font-size: 10px;">UIButton</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/审核被拒/" style="font-size: 10px;">审核被拒</a> <a href="/tags/计步器/" style="font-size: 10px;">计步器</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com/" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.huangyibiao.com/" target="_blank" title="标哥">标哥</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1759201381&verifier=eb816cbb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 一分耕耘 一分收获 <br/>
+			代码的搬运工</p>
+	</section>
+
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/zong1031" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/NickyWei" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/zong1031" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/zong1031" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/zong1031" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/zong1031" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/zong1031" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/zong1031" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/zong1031?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:599236845@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="魏成宗">魏成宗</a>
+			
+						<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260760061'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260760061%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		</p>
+		<div class="copyright">
+
+
+				</div>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"weichengzong"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0ca610c66227609f6e0b7f110f08563c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260760061'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1260760061' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

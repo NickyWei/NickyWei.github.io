@@ -13,23 +13,23 @@
     <meta name="keywords" content="web">
     <meta name="description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
 启动 Apache
-查看 Apache 版本打开终端，输入  -v ```  可以查看 Apache 版本信息。1 
-$ httpd -vServer version: Apache/2.4.16 (Unix)Server buil">
+查看 Apache 版本打开终端，输入  httpd -v  可以查看 Apache 版本信息。
+1234$ httpd -vServer version: Apache/2.4.16 (Unix)Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac OS 启动Apache">
 <meta property="og:url" content="http://yoursite.com/2016/11/09/Mac-OS-启动Apache/index.html">
 <meta property="og:site_name" content="CZ‘Blog">
 <meta property="og:description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
 启动 Apache
-查看 Apache 版本打开终端，输入  -v ```  可以查看 Apache 版本信息。1 
-$ httpd -vServer version: Apache/2.4.16 (Unix)Server buil">
-<meta property="og:updated_time" content="2016-11-09T09:05:22.000Z">
+查看 Apache 版本打开终端，输入  httpd -v  可以查看 Apache 版本信息。
+1234$ httpd -vServer version: Apache/2.4.16 (Unix)Server">
+<meta property="og:updated_time" content="2016-11-09T09:09:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac OS 启动Apache">
 <meta name="twitter:description" content="我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。
 启动 Apache
-查看 Apache 版本打开终端，输入  -v ```  可以查看 Apache 版本信息。1 
-$ httpd -vServer version: Apache/2.4.16 (Unix)Server buil">
+查看 Apache 版本打开终端，输入  httpd -v  可以查看 Apache 版本信息。
+1234$ httpd -vServer version: Apache/2.4.16 (Unix)Server">
 <meta name="twitter:creator" content="@zong1031">
 <link rel="publisher" href="zong1031">
 
@@ -114,10 +114,12 @@ $ httpd -vServer version: Apache/2.4.16 (Unix)Server buil">
 		
 		<p>我们经常性的需要使用局域网搭建 Web 服务器测试环境，调试一些web界面等，Mac OS X 自带了 Apache 和 PHP 环境，我们只需要简单的启动它就行了。</p>
 <h2 id="启动-Apache"><a href="#启动-Apache" class="headerlink" title="启动 Apache"></a>启动 Apache</h2><ul>
-<li><p>查看 Apache 版本<br>打开终端，输入  <figure class="highlight plain"><figcaption><span>-v ```  可以查看 Apache 版本信息。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
-<p>$ httpd -v<br>Server version: Apache/2.4.16 (Unix)<br>Server built:   Aug 22 2015 16:51:57<br>$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 启动 Apache   </div><div class="line">在终端输入 sudo apachectl start 即可启动 Apache。    </div><div class="line">启动后，在浏览器中输入 http://127.0.0.1 或 http://localhost 如果看到 It Works! 页面：</div><div class="line">那么 Apache 就启动成功了，站点的根目录为系统级根目录``` /Library/WebServer/Documents。```                                                                                </div><div class="line">启动后，你可以通过编辑 /etc/apache2/httpd.conf 文件来修改 Apache 配置。</div><div class="line">* 停止 Apache：sudo apachectl stop</div><div class="line">* 重启 Apache：sudo apachectl restart</div><div class="line"></div><div class="line">## 创建用户级根目录</div><div class="line"></div><div class="line">1. 我们也可以创建用户级根目录，更方便管理和操作。</div><div class="line">在用户目录下创建 ```Sites ```目录，```cd; mkdir Sites; touch Sites/.localized```，旧的 Mac 系统中如果该目录已存在，则略过。</div><div class="line">2. ```cd /etc/apache2/users``` 检查目录下是否存在 ```username.conf``` 文件，```username``` 为当前用户名，如果没有则创建一个 ```sudo touch username.conf```，并修改文件权限 ```sudo chmod 644 username.conf```。</div><div class="line">3. 创建之后，打开  ```username.conf``` 文件，```sudo vi  username.conf``` 将下面的配置信息写入文件，```username``` 依然为当前用户名：</div></pre></td></tr></table></figure>
+<li><p>查看 Apache 版本<br>打开终端，输入  <code>httpd -v</code>  可以查看 Apache 版本信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ httpd -v</div><div class="line">Server version: Apache/2.4.16 (Unix)</div><div class="line">Server built:   Aug 22 2015 16:51:57</div><div class="line">$</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<ul>
+<li>启动 Apache<br>在终端输入 sudo apachectl start 即可启动 Apache。<br>启动后，在浏览器中输入 <a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或 <a href="http://localhost" target="_blank" rel="external">http://localhost</a> 如果看到 It Works! 页面：<br>那么 Apache 就启动成功了，站点的根目录为系统级根目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">启动后，你可以通过编辑 /etc/apache2/httpd.conf 文件来修改 Apache 配置。</div><div class="line">* 停止 Apache：sudo apachectl stop</div><div class="line">* 重启 Apache：sudo apachectl restart</div><div class="line"></div><div class="line">## 创建用户级根目录</div><div class="line"></div><div class="line">1. 我们也可以创建用户级根目录，更方便管理和操作。</div><div class="line">在用户目录下创建 ```Sites ```目录，```cd; mkdir Sites; touch Sites/.localized```，旧的 Mac 系统中如果该目录已存在，则略过。</div><div class="line">2. ```cd /etc/apache2/users``` 检查目录下是否存在 ```username.conf``` 文件，```username``` 为当前用户名，如果没有则创建一个 ```sudo touch username.conf```，并修改文件权限 ```sudo chmod 644 username.conf```。</div><div class="line">3. 创建之后，打开  ```username.conf``` 文件，```sudo vi  username.conf``` 将下面的配置信息写入文件，```username``` 依然为当前用户名：</div></pre></td></tr></table></figure></li>
 </ul>
 <p>针对Apache不同版本 配置不同<br>For OSX 10.9 Apache 2.2</p>
 <directory "="" users="" username="" sites=""><br>Options Indexes MultiViews FollowSymLinks<br>AllowOverride All<br>Order allow,deny<br>Allow from all<br></directory><br>For OSX 10.10 Apache 2.4<br><directory "="" users="" username="" sites=""><br>AllowOverride All<br>Options Indexes MultiViews FollowSymLinks<br>Require all granted<br></directory>

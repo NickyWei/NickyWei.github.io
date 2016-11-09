@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/09/iOS-Healthkit%E5%92%8CCMPedometer%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2016-11-09T05:45:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Healthkit和CMPedometer区别</title>
+        <pubTime>2016-11-09T05:43:12.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Health</tag>
+         
+        <tag>计步器</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/09/%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E4%B8%8A%E4%BC%A0AppStore%E8%A2%AB%E6%8B%92%E7%9A%84%E5%8E%9F%E5%9B%A0/</loc>
     <lastmod>2016-11-09T03:58:31.000Z</lastmod>
     <data>

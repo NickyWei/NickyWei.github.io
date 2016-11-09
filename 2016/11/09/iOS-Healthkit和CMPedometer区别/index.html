@@ -4,29 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>UIButton设置图片和文字位置 | CZ‘Blog</title>
+    <title>iOS Healthkit和CMPedometer区别 | CZ‘Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="魏成宗">
     
 
-    <meta name="keywords" content="Button">
-    <meta name="description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
-因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，
-123456789101112//创建buttonUIButton *button = [UIButton buttonWithType:UIButtonTypeRound">
+    
+    <meta name="description" content="这几天在弄计步功能, 找了好久看了几篇零散的文章, 我自己做了总结, 我忘了我看文章的地址了, 没法附上转载连接了
+CMPedometer 可以访问用户活动(可以访问计步数据) 适用ios8以上的系统 ios可看最下面说明
+Healthkit 是ios系统中的健康应用 需要应用授权来访问健康数据(比如计步)
+这两个有什么区别呢?其实 Healthkit 也是 使用 CMPedometer 读取用户">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIButton设置图片和文字位置">
-<meta property="og:url" content="http://yoursite.com/2016/11/08/UIButton设置图片和文字位置/index.html">
+<meta property="og:title" content="iOS Healthkit和CMPedometer区别">
+<meta property="og:url" content="http://yoursite.com/2016/11/09/iOS-Healthkit和CMPedometer区别/index.html">
 <meta property="og:site_name" content="CZ‘Blog">
-<meta property="og:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
-因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，
-123456789101112//创建buttonUIButton *button = [UIButton buttonWithType:UIButtonTypeRound">
-<meta property="og:updated_time" content="2016-11-09T03:18:15.000Z">
+<meta property="og:description" content="这几天在弄计步功能, 找了好久看了几篇零散的文章, 我自己做了总结, 我忘了我看文章的地址了, 没法附上转载连接了
+CMPedometer 可以访问用户活动(可以访问计步数据) 适用ios8以上的系统 ios可看最下面说明
+Healthkit 是ios系统中的健康应用 需要应用授权来访问健康数据(比如计步)
+这两个有什么区别呢?其实 Healthkit 也是 使用 CMPedometer 读取用户">
+<meta property="og:updated_time" content="2016-11-09T05:45:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIButton设置图片和文字位置">
-<meta name="twitter:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
-因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，
-123456789101112//创建buttonUIButton *button = [UIButton buttonWithType:UIButtonTypeRound">
+<meta name="twitter:title" content="iOS Healthkit和CMPedometer区别">
+<meta name="twitter:description" content="这几天在弄计步功能, 找了好久看了几篇零散的文章, 我自己做了总结, 我忘了我看文章的地址了, 没法附上转载连接了
+CMPedometer 可以访问用户活动(可以访问计步数据) 适用ios8以上的系统 ios可看最下面说明
+Healthkit 是ios系统中的健康应用 需要应用授权来访问健康数据(比如计步)
+这两个有什么区别呢?其实 Healthkit 也是 使用 CMPedometer 读取用户">
 <meta name="twitter:creator" content="@zong1031">
 <link rel="publisher" href="zong1031">
 
@@ -89,14 +92,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/08/UIButton设置图片和文字位置/" title="UIButton设置图片和文字位置" itemprop="url">UIButton设置图片和文字位置</a>
+      <a href="/2016/11/09/iOS-Healthkit和CMPedometer区别/" title="iOS Healthkit和CMPedometer区别" itemprop="url">iOS Healthkit和CMPedometer区别</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/zong1031?rel=author" title="魏成宗" target="_blank" itemprop="author">魏成宗</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-08T11:36:09.000Z" itemprop="datePublished"> 发表于 2016-11-08</time>
+    <time datetime="2016-11-09T05:43:12.000Z" itemprop="datePublished"> 发表于 2016-11-09</time>
     
   </p>
 </header>
@@ -109,17 +112,16 @@
 		
 		</div>
 		
-		<p>在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。</p>
-<p>因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//创建button</div><div class="line">UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];</div><div class="line">// 创建imageview</div><div class="line">UIImage *image = [UIImage imageNamed:@"yourImage.png"];</div><div class="line">UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[imageView setImage:image];</div><div class="line">// 创建label</div><div class="line">UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[label setText:@"Your title"];</div><div class="line">// 添加到button中</div><div class="line">[button addSubview:label];</div><div class="line">[button addSubview:imageView];</div></pre></td></tr></table></figure>
-<p>还可以通过继承UIView进行自定制，这种方法的好处是简单明了，但是其实在UIButton中已经包含了UIImageView，我们不需要在自己添加该imageView的。</p>
-<p>UIButton中有imageEdgeInsets和titleEdgeInsets两个属性可以控制image和label的位置<br>我们可以给UIButton添加扩展，在扩展中对imageEdgeInsets和titleEdgeInsets进行重新的设置，这样就可以实现图片和文字位置切换。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct UIEdgeInsets &#123;</div><div class="line">    CGFloat top, left, bottom, right;  // specify amount to inset (positive) for each of the edges. values can be negative to &apos;outset&apos;</div><div class="line">&#125; UIEdgeInsets;</div></pre></td></tr></table></figure>
-<p>从上边我们可以看出来偏移量是上，左，下，右<br>这样就可以通过计算进行偏移量的计算</p>
-<blockquote>
-<p>比如图片在右文字在左<br>也就是最终我们希望图片上下位置不变top = 0, bottom = 0;向右位移一个label的宽度<br>同时标题上下位置不变top = 0, bottom = 0;向左位移一个图片的宽度<br>即 imageEdgeInsets = UIEdgeInsetsMake(0,0 + labelWidth,0,0 - labelWidth); 图片相对初始状态左边距加了labelWidth，右边减labelWidth，以及titleEdgeInsets ＝ UIEdgeInsetsMake(0,0 - imageViewWidth,0, 0 + imageViewWidth);</p>
-</blockquote>
-<p><a href="https://github.com/NickyWei/UIButton-CZEdgeInsets/tree/master" target="_blank" rel="external">Demo UIButton类别</a></p>
+		<p>这几天在弄计步功能, 找了好久看了几篇零散的文章, 我自己做了总结, 我忘了我看文章的地址了, 没法附上转载连接了</p>
+<p>CMPedometer 可以访问用户活动(可以访问计步数据) 适用ios8以上的系统 ios可看最下面说明</p>
+<p>Healthkit 是ios系统中的健康应用 需要应用授权来访问健康数据(比如计步)</p>
+<p>这两个有什么区别呢?<br>其实 Healthkit 也是 使用 CMPedometer 读取用户的步数和走的里程,当然计算的方法是在手机内部计算的, 它是利用 iphone5s 以上的m处理器来获取数据计算了,所以5s以下的设备是不支持 CMPedometer 手机计步的,当然有大牛可以利用重力传感器和加速度传感器一样可以写出自己的计步器软件,我是个菜鸟只能利用系统的拉</p>
+<p>Healthkit计步有个缺点, 计步不准,有人会问了:这个 Healthkit 和我下面的 demo 不都是用 CMPedometer 来获取计步数的,为什么 Healthkit 不准呢?<br>答: 那是因为Healthkit记录的时区问题, ios获取时间的时区按中国的时区少了8个小时, 举个例子, 如果我要记录 5月5日的数据应该是 xxxx-05-05 00:00:00 至xxxx-05-05 23:59:59 这个区间的步数情况, 而 Healthkit 记录的时区却是 xxxx-05-04 16:00:00 至 xxxx-05-05 15:59:59 ,所以Healthkit记录的信息是不准的, 如果要是自己开发计步软件呢,我们就要自己写把, 不要获取 Healthkit 的信息啦</p>
+<p>以下demo是用 swift语言写的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">定义个全局变量 如果不是全局变量会报错</div><div class="line">let pedonmeter:CMPedometer = CMPedometer()</div><div class="line"></div><div class="line">在方法里面写, 两种方法用哪个都可以,不明白的地方可以看文档</div><div class="line">//判断该设备是否支持计步功能</div><div class="line">if CMPedometer.isStepCountingAvailable()&#123;</div><div class="line">//开始时间</div><div class="line">let startTime = getStartTime()</div><div class="line">//结束时间</div><div class="line">let endTime = getEndTime()</div><div class="line">//第一种</div><div class="line">//获取一个时间范围内的数据最大7天 参数 开始时间,结束时间, 一个闭包</div><div class="line">pedonmeter.queryPedometerDataFromDate(startTime, toDate:endTime, withHandler: &#123; (pedometerData:CMPedometerData?, error:NSError?) -&gt; Void in</div><div class="line">if error != nil&#123;</div><div class="line">print(&quot;error:\(error)&quot;)</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">print(&quot;开始时间:\(startTime)&quot;)</div><div class="line">print(&quot;结束时间:\(endTime)&quot;)</div><div class="line">print(&quot;步数===\(pedometerData!.numberOfSteps)&quot;)</div><div class="line">print(&quot;距离===\(pedometerData!.distance)&quot;)</div><div class="line">&#125;</div><div class="line">&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">//第二种</div><div class="line">//获取指定开始时间到当前时间的数据 参数 开始时间, 一个闭包</div><div class="line">pedonmeter.startPedometerUpdatesFromDate(startTime, withHandler: &#123; (pedometerData:CMPedometerData?, error:NSError?) -&gt; Void in</div><div class="line">if error != nil&#123;</div><div class="line">print(&quot;error:\(error)&quot;)</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">print(&quot;开始时间:\(startTime)&quot;)</div><div class="line">print(&quot;结束时间:\(endTime)&quot;)</div><div class="line">print(&quot;步数===\(pedometerData!.numberOfSteps)&quot;)</div><div class="line">print(&quot;距离===\(pedometerData!.distance)&quot;)</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>下面是获取时间的方法,我是获取当天的,你们也可以自己改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">获取当前时区的时间</div><div class="line">*/</div><div class="line">func getEndTime() -&gt; NSDate</div><div class="line">&#123;</div><div class="line">//转换成本地时区</div><div class="line">let date = NSDate()</div><div class="line">let zone = NSTimeZone.systemTimeZone()</div><div class="line">let interval = zone.secondsFromGMTForDate(date)</div><div class="line">let nowDate = date.dateByAddingTimeInterval(Double(interval))</div><div class="line">return nowDate</div><div class="line">&#125;</div><div class="line">/**</div><div class="line">获取开始时间 当天0时0分0秒</div><div class="line">*/</div><div class="line">func getStartTime() -&gt; NSDate</div><div class="line">&#123;</div><div class="line">let datef = NSDateFormatter()</div><div class="line">datef.dateFormat = &quot;yyyy-MM-dd&quot;</div><div class="line">let stringdate = datef.stringFromDate(getEndTime())</div><div class="line">print(&quot;当天日期:\(stringdate)&quot;)</div><div class="line">let tdate = datef.dateFromString(stringdate)</div><div class="line">//获取本地时区的当天0时0分0秒</div><div class="line">let zone = NSTimeZone.systemTimeZone()</div><div class="line">let interval = zone.secondsFromGMTForDate(tdate!)</div><div class="line">let nowday = tdate!.dateByAddingTimeInterval(Double(interval))</div><div class="line">return nowday</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你像支持ios7的话那不就能使用CMPedometer<br>CMPedometer 的前身是 CMStepCounter<br>大家可以参考<a href="http://www.aichengxu.com/view/27076" target="_blank" rel="external">http://www.aichengxu.com/view/27076</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,7 +135,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/iOS/">iOS</a><a href="/tags/UIButton/">UIButton</a>
+  <span></span> <a href="/tags/iOS/">iOS</a><a href="/tags/Health/">Health</a><a href="/tags/计步器/">计步器</a>
   </div>
 
 </div>
@@ -178,19 +180,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/11/09/iOS-LLDB调试/" title="iOS LLDB调试">
-  <strong>上一篇：</strong><br/>
-  <span>
-  iOS LLDB调试</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/11/07/Hexo的基本命令/"  title="Hexo的基本命令">
+<a href="/2016/11/09/记录自己上传AppStore被拒的原因/"  title="记录自己上传AppStore被拒的原因">
  <strong>下一篇：</strong><br/> 
- <span>Hexo的基本命令
+ <span>记录自己上传AppStore被拒的原因
 </span>
 </a>
 </div>
@@ -199,7 +193,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/11/08/UIButton设置图片和文字位置/" data-title="UIButton设置图片和文字位置" data-url="http://yoursite.com/2016/11/08/UIButton设置图片和文字位置/"></div>
+	<div class="ds-thread" data-thread-key="2016/11/09/iOS-Healthkit和CMPedometer区别/" data-title="iOS Healthkit和CMPedometer区别" data-url="http://yoursite.com/2016/11/09/iOS-Healthkit和CMPedometer区别/"></div>
 </section>
 
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-08T11:43:12.000Z</updated>
+  <updated>2016-11-09T02:34:59.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,22 @@
     <link href="http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2016/11/08/UIButton设置图片和文字位置/</id>
     <published>2016-11-08T11:36:09.000Z</published>
-    <updated>2016-11-08T11:43:12.000Z</updated>
+    <updated>2016-11-09T02:34:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。</p>
+<p>因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//创建button</div><div class="line">UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];</div><div class="line">// 创建imageview</div><div class="line">UIImage *image = [UIImage imageNamed:@<span class="string">"yourImage.png"</span>];</div><div class="line">UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[imageView <span class="built_in">set</span>Image:image];</div><div class="line">// 创建label</div><div class="line">UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[label <span class="built_in">set</span>Text:@<span class="string">"Your title"</span>];</div><div class="line">// 添加到button中</div><div class="line">[button addSubview:label];</div><div class="line">[button addSubview:imageView];</div></pre></td></tr></table></figure>
+<p>还可以通过继承UIView进行自定制，这种方法的好处是简单明了，但是其实在UIButton中已经包含了UIImageView，我们不需要在自己添加该imageView的。</p>
+<p>UIButton中有imageEdgeInsets和titleEdgeInsets两个属性可以控制image和label的位置<br>我们可以给UIButton添加扩展，在扩展中对imageEdgeInsets和titleEdgeInsets进行重新的设置，这样就可以实现图片和文字位置切换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct UIEdgeInsets &#123;</div><div class="line">    CGFloat top, left, bottom, right;  // specify amount to inset (positive) for each of the edges. values can be negative to &apos;outset&apos;</div><div class="line">&#125; UIEdgeInsets;</div></pre></td></tr></table></figure>
+<p>从上边我们可以看出来偏移量是上，左，下，右<br>这样就可以通过计算进行偏移量的计算</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。&lt;/p&gt;
+&lt;p&gt;因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，&lt;/p&gt;
+&lt;figure clas
     
     </summary>
     
@@ -70,7 +83,7 @@
     <link href="http://yoursite.com/2016/11/07/hello-world/"/>
     <id>http://yoursite.com/2016/11/07/hello-world/</id>
     <published>2016-11-07T01:45:30.000Z</published>
-    <updated>2016-11-07T01:45:30.000Z</updated>
+    <updated>2016-11-08T11:50:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>

@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/</loc>
-    <lastmod>2016-11-08T11:43:12.000Z</lastmod>
+    <lastmod>2016-11-09T02:34:59.000Z</lastmod>
     <data>
         <display>
         <title>UIButton设置图片和文字位置</title>
@@ -20,6 +20,21 @@
              
               <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/07/hello-world/</loc>
+    <lastmod>2016-11-08T11:50:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2016-11-07T01:45:30.000Z</pubTime>
+        
+         
+           
         </display>
     </data>
     </url>
@@ -47,21 +62,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/07/hello-world/</loc>
-    <lastmod>2016-11-07T01:45:30.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2016-11-07T01:45:30.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://yoursite.com/2016/11/06/%E6%B5%8B%E8%AF%95/</loc>

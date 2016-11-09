@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/</loc>
-    <lastmod>2016-11-09T02:34:59.000Z</lastmod>
+    <lastmod>2016-11-09T02:45:14.000Z</lastmod>
     <data>
         <display>
         <title>UIButton设置图片和文字位置</title>

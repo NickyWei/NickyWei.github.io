@@ -21,7 +21,7 @@
 <meta property="og:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
 因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，
 123456789101112//创建buttonUIButton *button = [UIButton buttonWithType:UIButtonTypeRound">
-<meta property="og:updated_time" content="2016-11-09T02:34:59.000Z">
+<meta property="og:updated_time" content="2016-11-09T02:45:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIButton设置图片和文字位置">
 <meta name="twitter:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
@@ -116,6 +116,9 @@
 <p>UIButton中有imageEdgeInsets和titleEdgeInsets两个属性可以控制image和label的位置<br>我们可以给UIButton添加扩展，在扩展中对imageEdgeInsets和titleEdgeInsets进行重新的设置，这样就可以实现图片和文字位置切换。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct UIEdgeInsets &#123;</div><div class="line">    CGFloat top, left, bottom, right;  // specify amount to inset (positive) for each of the edges. values can be negative to &apos;outset&apos;</div><div class="line">&#125; UIEdgeInsets;</div></pre></td></tr></table></figure>
 <p>从上边我们可以看出来偏移量是上，左，下，右<br>这样就可以通过计算进行偏移量的计算</p>
+<blockquote>
+<p>比如图片在右文字在左<br>也就是最终我们希望图片上下位置不变top = 0, bottom = 0;向右位移一个label的宽度<br>同时标题上下位置不变top = 0, bottom = 0;向左位移一个图片的宽度<br>即 imageEdgeInsets = UIEdgeInsetsMake(0,0 + labelWidth,0,0 - labelWidth); 图片相对初始状态左边距加了labelWidth，右边减labelWidth，以及titleEdgeInsets ＝ UIEdgeInsetsMake(0,0 - imageViewWidth,0, 0 + imageViewWidth);</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">

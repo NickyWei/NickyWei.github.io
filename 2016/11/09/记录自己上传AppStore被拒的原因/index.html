@@ -21,7 +21,7 @@ Performance - 2.1We were unable to review your app as it crashed on launch. We h
 <meta property="og:description" content="记录一下自己上架应用被拒的一些问题。
 问题一
 Performance - 2.1We were unable to review your app as it crashed on launch. We have attached detailed crash logs to help troubleshoot this issue.Next StepsPlease revise your app">
-<meta property="og:updated_time" content="2016-11-09T03:57:48.000Z">
+<meta property="og:updated_time" content="2016-11-09T03:58:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录自己上传AppStore被拒的原因">
 <meta name="twitter:description" content="记录一下自己上架应用被拒的一些问题。
@@ -105,7 +105,7 @@ Performance - 2.1We were unable to review your app as it crashed on launch. We h
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一"><span class="toc-number">1.</span> <span class="toc-text">问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题三"><span class="toc-number">2.</span> <span class="toc-text">问题三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题四"><span class="toc-number">3.</span> <span class="toc-text">问题四</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一"><span class="toc-number">1.</span> <span class="toc-text">问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二"><span class="toc-number">2.</span> <span class="toc-text">问题二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题三"><span class="toc-number">3.</span> <span class="toc-text">问题三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题四"><span class="toc-number">4.</span> <span class="toc-text">问题四</span></a></li></ol>
 		
 		</div>
 		
@@ -114,8 +114,7 @@ Performance - 2.1We were unable to review your app as it crashed on launch. We h
 <p>Performance - 2.1<br>We were unable to review your app as it crashed on launch. We have attached detailed crash logs to help troubleshoot this issue.<strong>Next Steps</strong>Please revise your app and test it on a device while connected to an IPv6 network (all apps must support IPv6) to ensure it will launch without crashing.<strong>Resources</strong>For additional information about supporting IPv6 Networks, please refer to <a href="https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1" target="_blank" rel="external">Supporting IPv6 DNS64/NAT64 Networks</a> and <a href="https://developer.apple.com/support/ipv6/" target="_blank" rel="external">Supporting IPv6-only Networks</a>.For a networking overview, please see <a href="https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/Introduction/Introduction.html" target="_blank" rel="external">About Networking</a>.For information on how to symbolicate and read a crash log, please see <a href="https://developer.apple.com/library/content/technotes/tn2151/_index.html" target="_blank" rel="external">Tech Note TN2151 Understanding and Analyzing Application Crash Reports</a>.If you have difficulty reproducing this issue, please try testing the workflow described in <a href="https://developer.apple.com/library/ios/qa/qa1764/" target="_blank" rel="external">Testing Workflow with Xcode’s Archive feature</a>.If you have code-level questions after utilizing the above resources, you may wish to consult with <a href="https://developer.apple.com/support/technical/submit/" target="_blank" rel="external">Apple Developer Technical Support</a>. When the DTS engineer follows up with you, please be ready to provide:- complete details of your rejection issue(s)- screenshots- steps to reproduce the issue(s)- <a href="https://developer.apple.com/library/content/technotes/tn2151/_index.html" target="_blank" rel="external">symbolicated crash logs</a> - if your issue results in a crash log</p>
 </blockquote>
 <p>bb了一大堆说就是用你的应用挂了还扯到supporting IPv6，用的最新的网络请求库，网络地址用的是域名，测试没什么问题，即使没数据也不会挂了啊，查了半天竟然是数据库挂了，数据库挂了，数据库挂了，我的天<br><a href="https://github.com/wg689/Solve-App-Store-Review-Problem" target="_blank" rel="external">专门解决苹果审核问题的仓库.有ipv6 和后台定位被拒绝的终极解决方案，还有其他的</a></p>
-<p>###问题二</p>
-<blockquote>
+<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><blockquote>
 <p>-5  . 1.1 LEGAL: PRIVACY - DATA COLLECTION AND STORAGE<br>Legal -5.1.1<br>Your app uses the HealthKit or CareKit frameworks but does not include the required privacy policy.<strong>Next Steps</strong>Please update your app metadata to include a privacy policy URL and ensure that the URL you provide directs the user to your privacy policy.</p>
 </blockquote>
 <p>应用中用到了HealthKit框架，有些必要的描述和隐私协议都没具体的写清楚。</p>
@@ -208,7 +207,7 @@ Performance - 2.1We were unable to review your app as it crashed on launch. We h
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一"><span class="toc-number">1.</span> <span class="toc-text">问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题三"><span class="toc-number">2.</span> <span class="toc-text">问题三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题四"><span class="toc-number">3.</span> <span class="toc-text">问题四</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一"><span class="toc-number">1.</span> <span class="toc-text">问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二"><span class="toc-number">2.</span> <span class="toc-text">问题二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题三"><span class="toc-number">3.</span> <span class="toc-text">问题三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题四"><span class="toc-number">4.</span> <span class="toc-text">问题四</span></a></li></ol>
  
   </div>
 

@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/09/iOS-LLDB%E8%B0%83%E8%AF%95/</loc>
+    <lastmod>2016-11-09T03:23:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS LLDB调试</title>
+        <pubTime>2016-11-09T03:22:29.000Z</pubTime>
+        
+        <tag>调试</tag>
+         
+        <tag>LLDB</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/08/UIButton%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E4%BD%8D%E7%BD%AE/</loc>
-    <lastmod>2016-11-09T03:15:26.000Z</lastmod>
+    <lastmod>2016-11-09T03:18:15.000Z</lastmod>
     <data>
         <display>
         <title>UIButton设置图片和文字位置</title>

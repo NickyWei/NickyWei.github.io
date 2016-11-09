@@ -21,7 +21,7 @@
 <meta property="og:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
 因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，
 123456789101112//创建buttonUIButton *button = [UIButton buttonWithType:UIButtonTypeRound">
-<meta property="og:updated_time" content="2016-11-09T03:15:26.000Z">
+<meta property="og:updated_time" content="2016-11-09T03:18:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIButton设置图片和文字位置">
 <meta name="twitter:description" content="在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。
@@ -111,7 +111,7 @@
 		
 		<p>在开发的过程中经常会遇到需要在button中放置图片和文字，比如将图片放置在button左边，文字放置在右边。实现的方法也是很多的。</p>
 <p>因为UIButton也是继承自UIView，因此可以像其它的view一样添加subView，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//创建button</div><div class="line">UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];</div><div class="line">// 创建imageview</div><div class="line">UIImage *image = [UIImage imageNamed:@<span class="string">"yourImage.png"</span>];</div><div class="line">UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[imageView <span class="built_in">set</span>Image:image];</div><div class="line">// 创建label</div><div class="line">UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[label <span class="built_in">set</span>Text:@<span class="string">"Your title"</span>];</div><div class="line">// 添加到button中</div><div class="line">[button addSubview:label];</div><div class="line">[button addSubview:imageView];</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//创建button</div><div class="line">UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];</div><div class="line">// 创建imageview</div><div class="line">UIImage *image = [UIImage imageNamed:@"yourImage.png"];</div><div class="line">UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[imageView setImage:image];</div><div class="line">// 创建label</div><div class="line">UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(/*frame*/)];</div><div class="line">[label setText:@"Your title"];</div><div class="line">// 添加到button中</div><div class="line">[button addSubview:label];</div><div class="line">[button addSubview:imageView];</div></pre></td></tr></table></figure>
 <p>还可以通过继承UIView进行自定制，这种方法的好处是简单明了，但是其实在UIButton中已经包含了UIImageView，我们不需要在自己添加该imageView的。</p>
 <p>UIButton中有imageEdgeInsets和titleEdgeInsets两个属性可以控制image和label的位置<br>我们可以给UIButton添加扩展，在扩展中对imageEdgeInsets和titleEdgeInsets进行重新的设置，这样就可以实现图片和文字位置切换。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct UIEdgeInsets &#123;</div><div class="line">    CGFloat top, left, bottom, right;  // specify amount to inset (positive) for each of the edges. values can be negative to &apos;outset&apos;</div><div class="line">&#125; UIEdgeInsets;</div></pre></td></tr></table></figure>
@@ -178,6 +178,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/11/09/iOS-LLDB调试/" title="iOS LLDB调试">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS LLDB调试</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/11/07/Hexo的基本命令/"  title="Hexo的基本命令">
@@ -215,7 +223,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>1</sup></a></li>
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>2</sup></a></li>
 		  
 		
 		  
@@ -230,7 +238,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/UIButton/" style="font-size: 10px;">UIButton</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a>
+       <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/LLDB/" style="font-size: 10px;">LLDB</a> <a href="/tags/UIButton/" style="font-size: 10px;">UIButton</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a>
     </div>
   </div>
 

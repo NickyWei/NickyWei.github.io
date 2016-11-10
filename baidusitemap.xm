@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/10/iOS%E4%B8%8BJS%E4%B8%8EOC%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8MessageHandler/</loc>
-    <lastmod>2016-11-10T03:34:54.000Z</lastmod>
+    <lastmod>2016-11-10T03:45:04.000Z</lastmod>
     <data>
         <display>
         <title>iOS下JS与OC互相调用MessageHandler</title>

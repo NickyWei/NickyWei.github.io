@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/10/iOS-WKWebView%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2016-11-10T03:18:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS WKWebView使用</title>
+        <pubTime>2016-11-10T02:52:51.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>WKWebView</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/09/Mac-OS-%E5%90%AF%E5%8A%A8Apache/</loc>
     <lastmod>2016-11-09T09:16:50.000Z</lastmod>
     <data>

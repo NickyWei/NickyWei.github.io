@@ -1,0 +1,536 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS WKWebView使用 | CZ‘Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="魏成宗">
+    
+
+    <meta name="keywords" content="WKWebView">
+    <meta name="description" content="WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebView 和 UIWebView 使用上有很多区别，这篇主要介绍代理、标题、进度条展示的区别。
+代理 UIWebView 是 de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS WKWebView使用">
+<meta property="og:url" content="http://yoursite.com/2016/11/10/iOS-WKWebView使用/index.html">
+<meta property="og:site_name" content="CZ‘Blog">
+<meta property="og:description" content="WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebView 和 UIWebView 使用上有很多区别，这篇主要介绍代理、标题、进度条展示的区别。
+代理 UIWebView 是 de">
+<meta property="og:updated_time" content="2016-11-10T03:18:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS WKWebView使用">
+<meta name="twitter:description" content="WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebView 和 UIWebView 使用上有很多区别，这篇主要介绍代理、标题、进度条展示的区别。
+代理 UIWebView 是 de">
+<meta name="twitter:creator" content="@zong1031">
+<link rel="publisher" href="zong1031">
+
+    
+    <link rel="alternative" href="/atom.xml" title="CZ‘Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="CZ‘Blog" title="CZ‘Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="CZ‘Blog">CZ‘Blog</a></h1>
+				<h2 class="blog-motto">随随便便记录记录</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/share">资源共享</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 16859760138452797000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/10/iOS-WKWebView使用/" title="iOS WKWebView使用" itemprop="url">iOS WKWebView使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/zong1031?rel=author" title="魏成宗" target="_blank" itemprop="author">魏成宗</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-10T02:52:51.000Z" itemprop="datePublished"> 发表于 2016-11-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#代理"><span class="toc-number">1.</span> <span class="toc-text">代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WKNavigationDelegate"><span class="toc-number">1.1.</span> <span class="toc-text">WKNavigationDelegate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取-title"><span class="toc-number">2.</span> <span class="toc-text">获取 title</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#estimatedProgress-进度条"><span class="toc-number">3.</span> <span class="toc-text">estimatedProgress 进度条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Handlers-用于和网页的JS交互"><span class="toc-number">4.</span> <span class="toc-text">Message Handlers 用于和网页的JS交互</span></a></li></ol>
+		
+		</div>
+		
+		<p>WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebView 和 UIWebView 使用上有很多区别，这篇主要介绍代理、标题、进度条展示的区别。</p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p> UIWebView 是 delegate: UIWebViewDelegate，WKWebView 使用以下两个代理</p>
+<ol>
+<li>navigationDelegate: WKNavigationDelegate</li>
+<li>UIDelegate: WKUIDelegate   </li>
+</ol>
+<h4 id="WKNavigationDelegate"><a href="#WKNavigationDelegate" class="headerlink" title="WKNavigationDelegate"></a>WKNavigationDelegate</h4><p>  该代理提供的方法，可以用来追踪加载过程（页面开始加载、加载完成、加载失败）、决定是否执行跳转。</p>
+<table>
+<thead>
+<tr>
+<th>UIWebView</th>
+<th>WKWebView </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>– (NSString )stringByEvaluatingJavaScriptFromString:(NSString )script;</td>
+<td>– (void)evaluateJavaScript:(NSString )JavaScriptString completionHandler:(void (^ nullable)(nullable id, NSError __nullable error))completionHandler;  </td>
+</tr>
+<tr>
+<td>– (void)webViewDidStartLoad:(UIWebView *)webView</td>
+<td>– (void)webView:(WKWebView )webView didCommitNavigation:(null_unspecified WKNavigation )navigation  </td>
+</tr>
+<tr>
+<td>– (void)webViewDidFinishLoad:(UIWebView *)webView</td>
+<td>– (void)webView:(WKWebView )webView didFinishNavigation:(null_unspecified WKNavigation )navigation  </td>
+</tr>
+<tr>
+<td>– (void)webView:(UIWebView )webView didFailLoadWithError:(NSError )error</td>
+<td>– (void)webView:(WKWebView )webView didFailNavigation:(null_unspecified WKNavigation )navigation withError:(NSError *)error</td>
+</tr>
+<tr>
+<td>– (BOOL)webView:(UIWebView )webView shouldStartLoadWithRequest:(NSURLRequest )request navigationType:(UIWebViewNavigationType)navigationType</td>
+<td>– (void)webView:(WKWebView )webView decidePolicyForNavigationAction:(WKNavigationAction )navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</td>
+</tr>
+</tbody>
+</table>
+<p>比如，如果要拦截网页请求，UIWebView 使用以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType &#123;</div><div class="line">     NSURL *url = request.URL;</div><div class="line">    NSString *host = [url host];</div><div class="line">    if ([url.scheme isEqualToString:@&quot;inapp&quot;]) &#123;</div><div class="line"></div><div class="line">        /*</div><div class="line">         * 做一些处理</div><div class="line">         */</div><div class="line"></div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 WKWebView 中则用以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler &#123;</div><div class="line"></div><div class="line">    NSURL *url = navigationAction.request.URL;</div><div class="line">    NSString *host = [url host];</div><div class="line">    if ([url.scheme isEqualToString:@&quot;inapp&quot;]) &#123;</div><div class="line"></div><div class="line">        /*</div><div class="line">         * 做一些处理</div><div class="line">         */</div><div class="line"></div><div class="line">        decisionHandler(WKNavigationActionPolicyCancel);</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        decisionHandler(WKNavigationActionPolicyAllow);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取-title"><a href="#获取-title" class="headerlink" title="获取 title"></a>获取 title</h3><p>在 UIWebView 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.title = [webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];</div></pre></td></tr></table></figure>
+<p>而 WKWebView 有 title 属性可直接获取网页标题，可通过 KVO 方式获取网页标题的动态变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.title = webView.title;</div></pre></td></tr></table></figure>
+<h3 id="estimatedProgress-进度条"><a href="#estimatedProgress-进度条" class="headerlink" title="estimatedProgress 进度条"></a>estimatedProgress 进度条</h3><p>WKWebView 增加了 estimatedProgress，获取网页加载进度，轻松显示进度条。可通过 KVO 的方式获取 estimatedProgress 的变化。首先在 viewDidLoad 中添加观察者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:NULL];</div><div class="line">[self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(title)) options:NSKeyValueObservingOptionNew context:NULL];</div></pre></td></tr></table></figure>
+<p>KVO 的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context &#123;</div><div class="line">    if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))] &amp;&amp; object == self.webView) &#123;</div><div class="line">        NSLog(@&quot;%f&quot;, self.webView.estimatedProgress);</div><div class="line">        // estimatedProgress is a value from 0.0 to 1.0</div><div class="line">        // Update your UI here accordingly</div><div class="line"></div><div class="line">        [self.progressView setAlpha:1.0f];</div><div class="line">        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];</div><div class="line"></div><div class="line">        if(self.webView.estimatedProgress &gt;= 1.0f) &#123;</div><div class="line">            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^&#123;</div><div class="line">                [self.progressView setAlpha:0.0f];</div><div class="line">            &#125; completion:^(BOOL finished) &#123;</div><div class="line">                [self.progressView setProgress:0.0f animated:NO];</div><div class="line">            &#125;];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125; else if ([keyPath isEqualToString:@&quot;title&quot;]) &#123;</div><div class="line">        if (object == self.webView) &#123;</div><div class="line">            self.title = self.webView.title;</div><div class="line">        &#125; else &#123;</div><div class="line">            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，在 dealloc 中移除观察者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)dealloc &#123;</div><div class="line">    if ([self isViewLoaded]) &#123;</div><div class="line">        [self.webView removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress))];</div><div class="line">        [self.webView removeObserver:self forKeyPath:NSStringFromSelector(@selector(title))];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [self.webView setNavigationDelegate:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Message-Handlers-用于和网页的JS交互"><a href="#Message-Handlers-用于和网页的JS交互" class="headerlink" title="Message Handlers 用于和网页的JS交互"></a>Message Handlers 用于和网页的JS交互</h3>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a><a href="/tags/WKWebView/">WKWebView</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"zong1031"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2118684" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/09/Mac-OS-启动Apache/"  title="Mac OS 启动Apache">
+ <strong>下一篇：</strong><br/> 
+ <span>Mac OS 启动Apache
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/11/10/iOS-WKWebView使用/" data-title="iOS WKWebView使用" data-url="http://yoursite.com/2016/11/10/iOS-WKWebView使用/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#代理"><span class="toc-number">1.</span> <span class="toc-text">代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WKNavigationDelegate"><span class="toc-number">1.1.</span> <span class="toc-text">WKNavigationDelegate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取-title"><span class="toc-number">2.</span> <span class="toc-text">获取 title</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#estimatedProgress-进度条"><span class="toc-number">3.</span> <span class="toc-text">estimatedProgress 进度条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Handlers-用于和网页的JS交互"><span class="toc-number">4.</span> <span class="toc-text">Message Handlers 用于和网页的JS交互</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/web/" title="web">web<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Health/" style="font-size: 10px;">Health</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/LLDB/" style="font-size: 10px;">LLDB</a> <a href="/tags/UIButton/" style="font-size: 10px;">UIButton</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/审核被拒/" style="font-size: 10px;">审核被拒</a> <a href="/tags/计步器/" style="font-size: 10px;">计步器</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.devtang.com/" target="_blank" title="唐巧">唐巧</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.huangyibiao.com/" target="_blank" title="标哥">标哥</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1759201381&verifier=eb816cbb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 一分耕耘 一分收获 <br/>
+			代码的搬运工</p>
+	</section>
+
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/zong1031" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/NickyWei" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/zong1031" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/zong1031" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/zong1031" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/zong1031" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/zong1031" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/zong1031" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/zong1031?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:599236845@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="魏成宗">魏成宗</a>
+			
+						<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260760061'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260760061%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		</p>
+		<div class="copyright">
+
+
+				</div>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"weichengzong"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0ca610c66227609f6e0b7f110f08563c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260760061'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1260760061' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-09T09:16:50.000Z</updated>
+  <updated>2016-11-10T03:18:02.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS WKWebView使用</title>
+    <link href="http://yoursite.com/2016/11/10/iOS-WKWebView%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/11/10/iOS-WKWebView使用/</id>
+    <published>2016-11-10T02:52:51.000Z</published>
+    <updated>2016-11-10T03:18:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebView 和 UIWebView 使用上有很多区别，这篇主要介绍代理、标题、进度条展示的区别。</p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p> UIWebView 是 delegate: UIWebViewDelegate，WKWebView 使用以下两个代理</p>
+<ol>
+<li>navigationDelegate: WKNavigationDelegate</li>
+<li>UIDelegate: WKUIDelegate   </li>
+</ol>
+<h4 id="WKNavigationDelegate"><a href="#WKNavigationDelegate" class="headerlink" title="WKNavigationDelegate"></a>WKNavigationDelegate</h4><p>  该代理提供的方法，可以用来追踪加载过程（页面开始加载、加载完成、加载失败）、决定是否执行跳转。</p>
+<table>
+<thead>
+<tr>
+<th>UIWebView</th>
+<th>WKWebView </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>– (NSString )stringByEvaluatingJavaScriptFromString:(NSString )script;</td>
+<td>– (void)evaluateJavaScript:(NSString )JavaScriptString completionHandler:(void (^ nullable)(nullable id, NSError __nullable error))completionHandler;  </td>
+</tr>
+<tr>
+<td>– (void)webViewDidStartLoad:(UIWebView *)webView</td>
+<td>– (void)webView:(WKWebView )webView didCommitNavigation:(null_unspecified WKNavigation )navigation  </td>
+</tr>
+<tr>
+<td>– (void)webViewDidFinishLoad:(UIWebView *)webView</td>
+<td>– (void)webView:(WKWebView )webView didFinishNavigation:(null_unspecified WKNavigation )navigation  </td>
+</tr>
+<tr>
+<td>– (void)webView:(UIWebView )webView didFailLoadWithError:(NSError )error</td>
+<td>– (void)webView:(WKWebView )webView didFailNavigation:(null_unspecified WKNavigation )navigation withError:(NSError *)error</td>
+</tr>
+<tr>
+<td>– (BOOL)webView:(UIWebView )webView shouldStartLoadWithRequest:(NSURLRequest )request navigationType:(UIWebViewNavigationType)navigationType</td>
+<td>– (void)webView:(WKWebView )webView decidePolicyForNavigationAction:(WKNavigationAction )navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</td>
+</tr>
+</tbody>
+</table>
+<p>比如，如果要拦截网页请求，UIWebView 使用以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType &#123;</div><div class="line">     NSURL *url = request.URL;</div><div class="line">    NSString *host = [url host];</div><div class="line">    if ([url.scheme isEqualToString:@&quot;inapp&quot;]) &#123;</div><div class="line"></div><div class="line">        /*</div><div class="line">         * 做一些处理</div><div class="line">         */</div><div class="line"></div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 WKWebView 中则用以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler &#123;</div><div class="line"></div><div class="line">    NSURL *url = navigationAction.request.URL;</div><div class="line">    NSString *host = [url host];</div><div class="line">    if ([url.scheme isEqualToString:@&quot;inapp&quot;]) &#123;</div><div class="line"></div><div class="line">        /*</div><div class="line">         * 做一些处理</div><div class="line">         */</div><div class="line"></div><div class="line">        decisionHandler(WKNavigationActionPolicyCancel);</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        decisionHandler(WKNavigationActionPolicyAllow);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取-title"><a href="#获取-title" class="headerlink" title="获取 title"></a>获取 title</h3><p>在 UIWebView 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.title = [webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];</div></pre></td></tr></table></figure>
+<p>而 WKWebView 有 title 属性可直接获取网页标题，可通过 KVO 方式获取网页标题的动态变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.title = webView.title;</div></pre></td></tr></table></figure>
+<h3 id="estimatedProgress-进度条"><a href="#estimatedProgress-进度条" class="headerlink" title="estimatedProgress 进度条"></a>estimatedProgress 进度条</h3><p>WKWebView 增加了 estimatedProgress，获取网页加载进度，轻松显示进度条。可通过 KVO 的方式获取 estimatedProgress 的变化。首先在 viewDidLoad 中添加观察者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:NULL];</div><div class="line">[self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(title)) options:NSKeyValueObservingOptionNew context:NULL];</div></pre></td></tr></table></figure>
+<p>KVO 的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context &#123;</div><div class="line">    if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))] &amp;&amp; object == self.webView) &#123;</div><div class="line">        NSLog(@&quot;%f&quot;, self.webView.estimatedProgress);</div><div class="line">        // estimatedProgress is a value from 0.0 to 1.0</div><div class="line">        // Update your UI here accordingly</div><div class="line"></div><div class="line">        [self.progressView setAlpha:1.0f];</div><div class="line">        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];</div><div class="line"></div><div class="line">        if(self.webView.estimatedProgress &gt;= 1.0f) &#123;</div><div class="line">            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^&#123;</div><div class="line">                [self.progressView setAlpha:0.0f];</div><div class="line">            &#125; completion:^(BOOL finished) &#123;</div><div class="line">                [self.progressView setProgress:0.0f animated:NO];</div><div class="line">            &#125;];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125; else if ([keyPath isEqualToString:@&quot;title&quot;]) &#123;</div><div class="line">        if (object == self.webView) &#123;</div><div class="line">            self.title = self.webView.title;</div><div class="line">        &#125; else &#123;</div><div class="line">            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，在 dealloc 中移除观察者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)dealloc &#123;</div><div class="line">    if ([self isViewLoaded]) &#123;</div><div class="line">        [self.webView removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress))];</div><div class="line">        [self.webView removeObserver:self forKeyPath:NSStringFromSelector(@selector(title))];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [self.webView setNavigationDelegate:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Message-Handlers-用于和网页的JS交互"><a href="#Message-Handlers-用于和网页的JS交互" class="headerlink" title="Message Handlers 用于和网页的JS交互"></a>Message Handlers 用于和网页的JS交互</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WKWebView 是 iOS 8 引入的一个 WebKit API，替换 iOS 的 UIWebView 和 OSX 的 WebView，WKWebView 使用 Nitro JavaScript 引擎，运行 JavaScript 和 Safari 一样快。WKWebVi
+    
+    </summary>
+    
+      <category term="iOS开发" scheme="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="WKWebView" scheme="http://yoursite.com/tags/WKWebView/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac OS 启动Apache</title>

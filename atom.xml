@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-10T03:18:02.000Z</updated>
+  <updated>2016-11-10T03:34:54.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS下JS与OC互相调用MessageHandler</title>
+    <link href="http://yoursite.com/2016/11/10/iOS%E4%B8%8BJS%E4%B8%8EOC%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8MessageHandler/"/>
+    <id>http://yoursite.com/2016/11/10/iOS下JS与OC互相调用MessageHandler/</id>
+    <published>2016-11-10T03:21:59.000Z</published>
+    <updated>2016-11-10T03:34:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用WKWebView的时候，如果想要实现JS调用OC方法，除了拦截URL之外，还有一种简单的方式。那就是利用WKWebView的新特性MessageHandler来实现JS调用原生方法。</p>
+<h2 id="MessageHandler-是什么？"><a href="#MessageHandler-是什么？" class="headerlink" title="MessageHandler 是什么？"></a>MessageHandler 是什么？</h2><p>WKWebView 初始化时，有一个参数叫configuration，它是WKWebViewConfiguration类型的参数，而WKWebViewConfiguration有一个属性叫userContentController，它又是WKUserContentController类型的参数。WKUserContentController对象有一个方法- addScriptMessageHandler:name:，我把这个功能简称为MessageHandler。</p>
+<p> addScriptMessageHandler:name:有两个参数，第一个参数是userContentController的代理对象，第二个参数是JS里发送postMessage的对象。<br>所以要使用MessageHandler功能，就必须要实现WKScriptMessageHandler协议。<br>我们在该API的描述里可以看到在JS中的使用方法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> window.webkit.messageHandlers.&lt;name&gt;.postMessage(&lt;messageBody&gt;)</div><div class="line">//其中&lt;name&gt;，就是上面方法里的第二个参数`name`。</div><div class="line">//例如我们调用API的时候第二个参数填@&quot;Share&quot;，那么在JS里就是:</div><div class="line">//window.webkit.messageHandlers.Share.postMessage(&lt;messageBody&gt;)</div><div class="line">//&lt;messageBody&gt;是一个键值对，键是body，值可以有多种类型的参数。</div><div class="line">// 在`WKScriptMessageHandler`协议中，我们可以看到mssage是`WKScriptMessage`类型，有一个属性叫body。</div><div class="line">// 而注释里写明了body 的类型：</div><div class="line">Allowed types are NSNumber, NSString, NSDate, NSArray, NSDictionary, and NSNull.</div></pre></td></tr></table></figure>
+<h2 id="怎么使用MessageHandler？"><a href="#怎么使用MessageHandler？" class="headerlink" title="怎么使用MessageHandler？"></a>怎么使用MessageHandler？</h2><h3 id="创建WKWebViewConfiguration对象，配置各个API对应的MessageHandler。"><a href="#创建WKWebViewConfiguration对象，配置各个API对应的MessageHandler。" class="headerlink" title="创建WKWebViewConfiguration对象，配置各个API对应的MessageHandler。"></a>创建WKWebViewConfiguration对象，配置各个API对应的MessageHandler。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WKUserContentController对象可以添加多个scriptMessageHandler。</div></pre></td></tr></table></figure>
+<p>看了示例代码，会很容易理解。示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];</div><div class="line">    configuration.userContentController = [WKUserContentController new];</div><div class="line"></div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;ScanAction&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;Location&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;Share&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;Color&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;Pay&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;Shake&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;GoBack&quot;];</div><div class="line">    [configuration.userContentController addScriptMessageHandler:self name:@&quot;PlaySound&quot;];</div><div class="line"></div><div class="line">    WKPreferences *preferences = [WKPreferences new];</div><div class="line">    preferences.javaScriptCanOpenWindowsAutomatically = YES;</div><div class="line">    preferences.minimumFontSize = 40.0;</div><div class="line">    configuration.preferences = preferences;</div><div class="line">```    </div><div class="line"></div><div class="line">### 创建WKWebView</div><div class="line"></div><div class="line">这里没什么好说的，直接看示例代码吧：</div></pre></td></tr></table></figure>
+<p>  self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];</p>
+<pre><code>NSString *urlStr = [[NSBundle mainBundle] pathForResource:@&quot;index.html&quot; ofType:nil];
+NSURL *fileURL = [NSURL fileURLWithPath:urlStr];
+[self.webView loadFileURL:fileURL allowingReadAccessToURL:fileURL];
+
+self.webView.navigationDelegate = self;
+self.webView.UIDelegate = self;
+[self.view addSubview:self.webView];
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 实现协议方法</div><div class="line">我这里实现了两个协议&lt;WKUIDelegate,WKScriptMessageHandler&gt;，WKUIDelegate是因为我在JS中弹出了alert 。WKScriptMessageHandler是因为我们要处理JS调用OC方法的请求。 </div><div class="line">先看实现协议方法的示例代码：</div></pre></td></tr></table></figure>
+<p>#pragma mark - WKScriptMessageHandler</p>
+<ul>
+<li><p>(void)userContentController:(WKUserContentController <em>)userContentController didReceiveScriptMessage:(WKScriptMessage </em>)message<br>{<br>//    message.body  –  Allowed types are NSNumber, NSString, NSDate, NSArray,NSDictionary, and NSNull.<br>  if ([message.name isEqualToString:@”ScanAction”]) {</p>
+<pre><code>NSLog(@&quot;扫一扫&quot;);
+</code></pre><p>  } else if ([message.name isEqualToString:@”Location”]) {</p>
+<pre><code>[self getLocation];
+</code></pre><p>  } else if ([message.name isEqualToString:@”Share”]) {</p>
+<pre><code>[self shareWithParams:message.body];
+</code></pre><p>  } else if ([message.name isEqualToString:@”Color”]) {</p>
+<pre><code>[self changeBGColor:message.body];
+</code></pre><p>  } else if ([message.name isEqualToString:@”Pay”]) {</p>
+<pre><code>[self payWithParams:message.body];
+</code></pre><p>  } else if ([message.name isEqualToString:@”Shake”]) {</p>
+<pre><code>[self shakeAction];
+</code></pre><p>  } else if ([message.name isEqualToString:@”GoBack”]) {</p>
+<pre><code>[self goBack];
+</code></pre><p>  } else if ([message.name isEqualToString:@”PlaySound”]) {</p>
+<pre><code>[self playSound:message.body];
+</code></pre><p>  }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">WKScriptMessage有两个关键属性name 和 body。 </div><div class="line">因为我们给每一个OC 方法取了一个name，那么我们就可以根据name 来区分执行不同的方法。body 中存着JS 要给OC 传的参数。 </div><div class="line">关于参数body 的解析，我就举一个body中放字典的例子，其他的稍后可以看demo。 </div><div class="line">解析JS 调用OC 实现分享的参数：</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)shareWithParams:(NSDictionary *)tempDic<br>{<br>  if (![tempDic isKindOfClass:[NSDictionary class]]) {</p>
+<pre><code>return;
+</code></pre><p>  }</p>
+<p>  NSString <em>title = [tempDic objectForKey:@”title”];<br>  NSString </em>content = [tempDic objectForKey:@”content”];<br>  NSString *url = [tempDic objectForKey:@”url”];<br>  // 在这里执行分享的操作</p>
+<p>  // 将分享结果返回给js<br>  NSString <em>jsStr = [NSString stringWithFormat:@”shareResult(‘%@’,’%@’,’%@’)”,title,content,url];<br>  [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError </em> _Nullable error) {</p>
+<pre><code>NSLog(@&quot;%@----%@&quot;,result, error);
+</code></pre><p>  }];<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">message.boby 就是JS 里传过来的参数。我们不同的方法先做一下容错性判断。然后正常取值就可以了。</div><div class="line"></div><div class="line">### 处理HTML中JS调用</div><div class="line"></div><div class="line">HMTL的源码跟之前的HTML内容差不多，只有JS的调用部分改变了。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>// 传null<br>function scanClick() {<br>    window.webkit.messageHandlers.ScanAction.postMessage(null);<br>}<br>// 传字典<br>function shareClick() {<br>    window.webkit.messageHandlers.Share.postMessage({title:’测试分享的标题’,content:’测试分享的内容’,url:’<a href="http://www.baidu.com&#39;}" target="_blank" rel="external">http://www.baidu.com&#39;}</a>);<br>}<br>// 传字符串<br>function playSound() {<br>    window.webkit.messageHandlers.PlaySound.postMessage(‘shake_sound_male.wav’);<br>}<br>// 传数组<br>function colorClick() {<br>    window.webkit.messageHandlers.Color.postMessage([67,205,128,0.5]);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### OC调用JS</div><div class="line"></div><div class="line">这里使用WKWebView 实现OC 调用JS方法跟上一篇是一样的，还是利用 </div><div class="line">- evaluateJavaScript:completionHandler:。像下面这样使用：</div></pre></td></tr></table></figure></p>
+<p>// 将分享结果返回给js<br>    NSString <em>jsStr = [NSString stringWithFormat:@”shareResult(‘%@’,’%@’,’%@’)”,title,content,url];<br>    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError </em> _Nullable error) {<br>        NSLog(@”%@—-%@”,result, error);<br>    }];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 使用MessageHandler 的好处</div><div class="line"></div><div class="line">1. 在JS中写起来简单，不用再用创建URL的方式那么麻烦了。</div><div class="line">2. JS传递参数更方便。使用拦截URL的方式传递参数，只能把参数拼接在后面，如果遇到要传递的参数中有特殊字符，如&amp;、=、？等，必须得转换，否则参数解析肯定会出错。                   </div><div class="line">例如传递的url是这样的:        </div><div class="line">http://www.baidu.com/share/openShare.htm?share_uuid=shdfxdfdsfsdf&amp;name=1234556             </div><div class="line">使用拦截URL 的JS调用方式</div></pre></td></tr></table></figure></p>
+<p>loadURL(“haleyAction://shareClick?title=分享的标题&amp;content=分享的内容&amp;url=链接地址&amp;imagePath=图片地址”); }<br>1<br>```</p>
+<p>将上面的url 放入链接地址这里后，根本无法区分share_uuid是其他参数，还是url里附带的参数。<br>但是使用MessageHandler 就可以避免特殊字符引起的问题。</p>
+<p>更详细的使用步骤还是去工程中查看吧。地址：<a href="https://github.com/Haley-Wong/JS_OC/tree/master/JS_OC_MessageHandler" target="_blank" rel="external">JS_OC_MessageHandler</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用WKWebView的时候，如果想要实现JS调用OC方法，除了拦截URL之外，还有一种简单的方式。那就是利用WKWebView的新特性MessageHandler来实现JS调用原生方法。&lt;/p&gt;
+&lt;h2 id=&quot;MessageHandler-是什么？&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="iOS开发" scheme="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="MessageHandler" scheme="http://yoursite.com/tags/MessageHandler/"/>
+    
+      <category term="JS与OC交互" scheme="http://yoursite.com/tags/JS%E4%B8%8EOC%E4%BA%A4%E4%BA%92/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS WKWebView使用</title>

@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/10/iOS%E4%B8%8BJS%E4%B8%8EOC%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8MessageHandler/</loc>
+    <lastmod>2016-11-10T03:34:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS下JS与OC互相调用MessageHandler</title>
+        <pubTime>2016-11-10T03:21:59.000Z</pubTime>
+        
+        <tag>MessageHandler</tag>
+         
+        <tag>JS与OC交互</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/10/iOS-WKWebView%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2016-11-10T03:18:02.000Z</lastmod>
     <data>

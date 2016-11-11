@@ -4,20 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>测试 | CZ‘Blog</title>
+    <title>edgesForExtendedLayout | CZ‘Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="魏成宗">
     
 
-    
-    <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="http://yoursite.com/2016/11/06/测试/index.html">
+    <meta name="keywords" content="edgesForExtendedLayout">
+    <meta name="description" content="edgesForExtendedLayout是一个类型为UIExtendedEdge的属性，指定边缘要延伸的方向。因为iOS7鼓励全屏布局，它的默认值很自然地是UIRectEdgeAll，四周边缘均延伸，就是说，如果即使视图中上有navigationBar，下有tabBar，那么视图仍会延伸覆盖到四周的区域。
+1self.edgesForExtendedLayout = UIRectEdgeNon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="edgesForExtendedLayout">
+<meta property="og:url" content="http://yoursite.com/2016/11/11/edgesForExtendedLayout/index.html">
 <meta property="og:site_name" content="CZ‘Blog">
-<meta property="og:updated_time" content="2016-11-07T01:45:30.000Z">
+<meta property="og:description" content="edgesForExtendedLayout是一个类型为UIExtendedEdge的属性，指定边缘要延伸的方向。因为iOS7鼓励全屏布局，它的默认值很自然地是UIRectEdgeAll，四周边缘均延伸，就是说，如果即使视图中上有navigationBar，下有tabBar，那么视图仍会延伸覆盖到四周的区域。
+1self.edgesForExtendedLayout = UIRectEdgeNon">
+<meta property="og:updated_time" content="2016-11-11T08:50:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
+<meta name="twitter:title" content="edgesForExtendedLayout">
+<meta name="twitter:description" content="edgesForExtendedLayout是一个类型为UIExtendedEdge的属性，指定边缘要延伸的方向。因为iOS7鼓励全屏布局，它的默认值很自然地是UIRectEdgeAll，四周边缘均延伸，就是说，如果即使视图中上有navigationBar，下有tabBar，那么视图仍会延伸覆盖到四周的区域。
+1self.edgesForExtendedLayout = UIRectEdgeNon">
 <meta name="twitter:creator" content="@zong1031">
 <link rel="publisher" href="zong1031">
 
@@ -80,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/06/测试/" title="测试" itemprop="url">测试</a>
+      <a href="/2016/11/11/edgesForExtendedLayout/" title="edgesForExtendedLayout" itemprop="url">edgesForExtendedLayout</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/zong1031?rel=author" title="魏成宗" target="_blank" itemprop="author">魏成宗</a>
 		
   <p class="article-time">
-    <time datetime="2016-11-06T03:16:50.000Z" itemprop="datePublished"> 发表于 2016-11-06</time>
+    <time datetime="2016-11-11T08:49:31.000Z" itemprop="datePublished"> 发表于 2016-11-11</time>
     
   </p>
 </header>
@@ -100,11 +106,25 @@
 		
 		</div>
 		
-		  
+		<p>edgesForExtendedLayout是一个类型为UIExtendedEdge的属性，指定边缘要延伸的方向。<br>因为iOS7鼓励全屏布局，它的默认值很自然地是UIRectEdgeAll，四周边缘均延伸，就是说，如果即使视图中上有navigationBar，下有tabBar，那么视图仍会延伸覆盖到四周的区域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.edgesForExtendedLayout = UIRectEdgeNone;</div></pre></td></tr></table></figure>
+<p>来解决UINavigationBar透明的问题。设置了UIRectEdgeNone之后，你嵌在UIViewController里面的UITableView和UIScrollView就不会穿过UINavigationBar了，同时UIView的控件也回复到了iOS6时代。</p>
+<p>不过这个对于Status Bar在iOS7上面的变化是无效的，正确的说应该是部分无效。在存在Navigation部分或者Tabbar部分的时候，上面的代码可以使得Status Bar也不载透明（有待验证，毕竟UIViewController的可用空间被控制了），但是在没有这两个部分的时候，Status Bar依旧是会记入UIView范围的。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
 
 </div>
 
@@ -148,20 +168,20 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/11/07/hello-world/" title="Hello World">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hello World</span>
+
+<div class="next">
+<a href="/2016/11/10/iOS下JS与OC互相调用MessageHandler/"  title="iOS下JS与OC互相调用MessageHandler">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS下JS与OC互相调用MessageHandler
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/11/06/测试/" data-title="测试" data-url="http://yoursite.com/2016/11/06/测试/"></div>
+	<div class="ds-thread" data-thread-key="2016/11/11/edgesForExtendedLayout/" data-title="edgesForExtendedLayout" data-url="http://yoursite.com/2016/11/11/edgesForExtendedLayout/"></div>
 </section>
 
 

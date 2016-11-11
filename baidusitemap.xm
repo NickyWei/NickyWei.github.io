@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/11/edgesForExtendedLayout/</loc>
+    <lastmod>2016-11-11T08:50:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>edgesForExtendedLayout</title>
+        <pubTime>2016-11-11T08:49:31.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://yoursite.com/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/10/iOS-WKWebView%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2016-11-10T03:47:14.000Z</lastmod>
     <data>

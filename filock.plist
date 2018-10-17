@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<dict>
+		<key>item 0</key>
+		<dict>
+			<key>metadata</key>
+			<dict>
+				<key>title</key>
+				<string>飞洛客</string>
+				<key>subtitle</key>
+				<string></string>
+				<key>kind</key>
+				<string>software</string>
+				<key>bundle-version</key>
+				<string>1.0</string>
+				<key>bundle-identifier</key>
+				<string>com.hyperchain.BaasFilock</string>
+			</dict>
+			<key>assets</key>
+			<array>
+				<dict>
+					<key>kind</key>
+					<string>software-package</string>
+					<key>url</key>
+					<string>https://filoop.hyperchain.cn/api/v1/qrcode/飞洛客.ipa</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
